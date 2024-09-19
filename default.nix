@@ -227,7 +227,7 @@
                     "zone_id": "''${resource.cloudflare_zone.dns_zone.id}",
                     "count": 3,
                     "name": ("''${resource.aws_ses_domain_dkim.domain_dkim_" + . + ".dkim_tokens[count.index]}._domainkey"),
-                    "value": ("''${resource.aws_ses_domain_dkim.domain_dkim_" + . + ".dkim_tokens[count.index]}." + (if $dkim_domain_exception[.] then $dkim_domain_exception[.] else "dkim.amazonses.com" end)),
+                    "content": ("''${resource.aws_ses_domain_dkim.domain_dkim_" + . + ".dkim_tokens[count.index]}." + (if $dkim_domain_exception[.] then $dkim_domain_exception[.] else "dkim.amazonses.com" end)),
                     "type":"CNAME",
                     "ttl": 3600,
                     "proxied": false
@@ -352,7 +352,7 @@
                     "name": "''${var.domain_name}",
                     "ttl": 3600,
                     "proxied": false,
-                    "value": ( "inbound-smtp." + . + ".amazonaws.com" ),
+                    "content": ( "inbound-smtp." + . + ".amazonaws.com" ),
                     "type": "MX",
                     "priority": 10,
 
